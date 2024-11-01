@@ -1,0 +1,82 @@
+/* HeroSection.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&family=Lora:wght@400;700&display=swap');
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+.hero-section {
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    height: 500px; /* Full viewport height */
+    width: 100%; /* Full width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Prevent overflow if necessary */
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute; /* Position it absolutely within the section */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(14, 99, 163, 0.6); /* Shade using your specified color */
+    z-index: 1; /* Ensure it's below text but above the background */
+}
+
+.hero-content {
+    background: transparent; /* Semi-transparent background for text */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* Position for stacking order */
+    z-index: 2; /* Bring content above the overlay */
+}
+
+.hero-title {
+    font-size: 30px; /* Smaller title font size */
+    font-weight: 600; /* Semi-bold weight for title */
+    margin: 0;
+    animation: fadeInUp 1s ease forwards; /* Apply animation */
+    animation-delay: 0.2s; /* Delay for a staggered effect */
+}
+
+.hero-subtitle {
+    font-size: 17px; /* Smaller subtitle font size */
+    margin: 10px 0 0;
+    color: #56bc45; /* Subtitle color */
+    animation: fadeInUp 1s ease forwards; /* Apply animation */
+    animation-delay: 0.4s; /* Delay for a staggered effect */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 26px; /* Smaller title font size for mobile */
+    }
+    
+    .hero-subtitle {
+        font-size: 16px; /* Smaller subtitle font size for mobile */
+    }
+}
+
+/* Additional styles to reset margins */
+html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 100%; /* Ensure full width */
+    height: 100%; /* Ensure full height */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}

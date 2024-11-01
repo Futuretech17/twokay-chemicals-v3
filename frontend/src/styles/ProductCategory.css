@@ -1,0 +1,88 @@
+.product-categories {
+    padding: 40px 20px; /* Padding for the section */
+    text-align: center; /* Center the text */
+    background-color: #f4f8fb; /* Consistent background color */
+    margin-top: -50px;
+}
+
+.product-categories h2 {
+    font-size: 28px;
+    color: #0046b1; /* Consistent heading color */
+    margin-bottom: 20px;
+    animation: fadeInSlide 7s infinite; /* Apply animation */
+}
+
+.categories-container {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping */
+    justify-content: center; /* Center the items */
+    margin: 0 120px; /* Center the container */
+    padding: 0; /* Add horizontal padding for uniformity */
+}
+
+/* Add keyframes for the h2 animation */
+@keyframes fadeInSlide {
+    0% { opacity: 0; transform: translateY(-50px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(50px); }
+}
+
+/* Rest of your existing CSS */
+.category-card {
+    background-size: cover; /* Cover the card with the background */
+    background-position: center; /* Center the background image */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 200px; /* Responsive sizing */
+    max-width: 300px; /* Adjust max-width for better proportions */
+    margin: 10px; /* Uniform margin */
+    padding: 20px;
+    color: white; /* Text color on the card */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animation for hover effect */
+    position: relative; /* For z-index control */
+    height: 250px; /* Fixed height for better uniformity */
+}
+
+.category-card::before {
+    content: ''; /* Create a pseudo-element for shading */
+    position: absolute; /* Position it absolutely within the card */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(14, 99, 163, 0.2); /* Semi-transparent black for shading */
+    border-radius: 8px; /* Match card border-radius */
+    z-index: 1; /* Place it below the content */
+}
+
+.category-card h3 {
+    margin: 20px 0; /* Spacing above and below the heading */
+    font-size: 20px;
+    z-index: 2; /* Above the shading */
+    position: relative; /* Position relative for z-index to work */
+}
+
+.enquire-button {
+    padding: 10px 15px; /* Padding for the button */
+    background-color: #7aba6f; /* Button background color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Button text color */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Animation for background color change */
+    z-index: 2; /* Above the shading */
+    position: relative; /* Position relative for z-index to work */
+}
+
+.enquire-button:hover {
+    background-color: #6a9a54; /* Darker shade on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .category-card {
+        flex: 1 1 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Adjust margin */
+    }
+}

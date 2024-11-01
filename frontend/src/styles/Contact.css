@@ -1,0 +1,15 @@
+/* src/styles/Contact.css */
+
+.contact {
+    padding: 2rem;
+    text-align: center;
+    background-color: #ffffff;
+    color: #55bc3e;
+  }
+  
+  @media (max-width: 768px) {
+    .contact {
+      padding: 1rem;
+    }
+  }
+  

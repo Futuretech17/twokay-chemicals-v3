@@ -1,0 +1,24 @@
+/* src/styles/About.css */
+.about {
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--background-color);
+  }
+  
+  .about h2 {
+    font-family: var(--font-heading);
+    color: var(--secondary-color);
+  }
+  
+  .about p {
+    font-family: var(--font-main);
+    color: var(--secondary-color);
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 1rem;
+    }
+  }
+  
+  
