@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';           
 import About from './pages/About';         
 import Products from './pages/Products';   
-import Contact from './pages/Contact';     
+import Contact from './pages/Contact';    
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   return (

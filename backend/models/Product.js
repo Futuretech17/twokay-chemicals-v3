@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     name: { type: String, required: true },
     category: { type: String, required: true },
-    title: { type: String, required: false }, // optional
-    description: { type: String, required: false }, // optional
-    size: { type: [String], required: false }, // optional, array of sizes
-    price: { type: String, required: false }, // optional
-    image: { type: String, required: true } // required
-});
+    title: { type: String },
+    description: { type: String },
+    size: { type: [String] },
+    price: { type: Number },
+    image: { type: String },
+    inStock: { type: Boolean, default: true },
+    trending: { type: Boolean, default: false },
+}, { timestamps: true });
 
 module.exports = mongoose.model('Product', productSchema);

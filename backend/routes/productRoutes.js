@@ -2,12 +2,19 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const Product = require('../models/Product'); // Import Product model
+
+// Ensure the 'product-images' folder exists
+const uploadFolder = path.join(__dirname, '..', 'public', 'product-images');
+if (!fs.existsSync(uploadFolder)) {
+    fs.mkdirSync(uploadFolder, { recursive: true });
+}
 
 // Set up Multer for handling file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/product-images'); // Ensure this folder exists
+        cb(null, uploadFolder); // Ensure this folder exists
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
@@ -16,13 +23,51 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Route to fetch all products
+// Route to fetch all products with pagination
 router.get('/', async (req, res) => {
+    const { page = 1, limit = 10 } = req.query; // Default to page 1 and limit 10 products per page
+
     try {
-        const products = await Product.find();
+        // Fetch paginated products
+        const products = await Product.find()
+            .skip((page - 1) * limit) // Skip products from previous pages
+            .limit(parseInt(limit)) // Limit the number of products to the requested page
+            .exec();
+
+        // Get the total count of products for pagination
+        const totalProducts = await Product.countDocuments();
+
+        res.json({
+            products,
+            totalProducts,
+            totalPages: Math.ceil(totalProducts / limit), // Calculate the total pages
+            currentPage: parseInt(page)
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching products', error });
+    }
+});
+
+// Route to fetch what's new
+router.get('/whats-new', async (req, res) => {
+    try {
+        const products = await Product.find({ inStock: true })
+                                      .sort({ createdAt: -1 })  // Sort by newest products
+                                      .limit(5);  // Adjust the number of products to display
         res.json(products);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: 'Error fetching new products', error });
+    }
+});
+
+// Route to fetch trending products
+router.get('/trending', async (req, res) => {
+    try {
+        const products = await Product.find({ trending: true })
+                                      .limit(5);  // Adjust the number of products to display
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching trending products', error });
     }
 });
 

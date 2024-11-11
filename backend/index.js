@@ -6,7 +6,7 @@ const productRoutes = require('./routes/productRoutes'); // Import your routes f
 
 require('dotenv').config(); // Load environment variables from .env file
 
-const app = express();
+const app = express(); 
 
 // Middleware
 app.use(cors());
@@ -18,9 +18,10 @@ app.use('/api/products', productRoutes);
 // Serve static files for uploaded images
 app.use('/product-images', express.static(path.join(__dirname, 'public/product-images')));
 
-// Connect to MongoDB
+// Connect to MongoDB without deprecated options
 const PORT = process.env.PORT || 5000;
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
     .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
     .catch((error) => console.error(error));
+
 
