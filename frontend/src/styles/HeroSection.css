@@ -15,7 +15,7 @@
 .hero-section {
     background-size: cover; /* Cover the entire section */
     background-position: center; /* Center the background image */
-    height: 500px; /* Full viewport height */
+    height: 400px; /* Full viewport height */
     width: 100%; /* Full width */
     display: flex;
     align-items: center;

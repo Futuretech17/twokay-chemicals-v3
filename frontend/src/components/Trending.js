@@ -49,7 +49,7 @@ const Trending = () => {
               />
               <h3>{product.name}</h3>
               <p>{product.category}</p>
-              <a href="#">Learn More</a>
+              <a href="javascript:void(0)">Learn More</a>
             </div>
           ))
         ) : (

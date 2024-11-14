@@ -5,12 +5,17 @@
     margin-top: -50px;
 }
 
+/* Heading Animation */
 .product-categories h2 {
     font-size: 28px;
     color: #0046b1; /* Consistent heading color */
     margin-bottom: 20px;
-    animation: fadeInSlide 7s infinite; /* Apply animation */
+    opacity: 0;  /* Start with no opacity */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s; /* Add a slight delay for smooth sequential appearance */
 }
+
 
 .categories-container {
     display: flex;
@@ -28,20 +33,31 @@
     100% { opacity: 0; transform: translateY(50px); }
 }
 
-/* Rest of your existing CSS */
 .category-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     background-size: cover; /* Cover the card with the background */
     background-position: center; /* Center the background image */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     flex: 1 1 200px; /* Responsive sizing */
     max-width: 300px; /* Adjust max-width for better proportions */
     margin: 10px; /* Uniform margin */
     padding: 20px;
     color: white; /* Text color on the card */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animation for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
     position: relative; /* For z-index control */
     height: 250px; /* Fixed height for better uniformity */
+    text-align: center;
+    cursor: pointer; /* Makes the whole card clickable */
+    text-decoration: none;
+}
+
+.category-card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhances shadow on hover */
 }
 
 .category-card::before {
@@ -51,7 +67,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(14, 99, 163, 0.2); /* Semi-transparent black for shading */
+    background-color: rgba(14, 99, 163, 0.4); /* Semi-transparent black for shading */
     border-radius: 8px; /* Match card border-radius */
     z-index: 1; /* Place it below the content */
 }
@@ -63,6 +79,9 @@
     position: relative; /* Position relative for z-index to work */
 }
 
+/* Remove underline specifically for links in .category-card */
+
+
 .enquire-button {
     padding: 10px 15px; /* Padding for the button */
     background-color: #7aba6f; /* Button background color */
@@ -70,13 +89,15 @@
     border-radius: 5px; /* Rounded corners */
     color: white; /* Button text color */
     cursor: pointer; /* Change cursor on hover */
-    transition: background-color 0.3s ease; /* Animation for background color change */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Animation for background color change */
     z-index: 2; /* Above the shading */
     position: relative; /* Position relative for z-index to work */
+    text-decoration: none; /* Removes underline from the link */
 }
 
 .enquire-button:hover {
     background-color: #6a9a54; /* Darker shade on hover */
+    transform: translateY(-3px); /* Adds a "lift" effect on button hover */
 }
 
 /* Responsive adjustments */
@@ -84,5 +105,17 @@
     .category-card {
         flex: 1 1 100%; /* Full width on smaller screens */
         margin: 10px 0; /* Adjust margin */
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Starts slightly below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Moves to the normal position */
     }
 }

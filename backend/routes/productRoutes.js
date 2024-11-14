@@ -14,59 +14,59 @@ if (!fs.existsSync(uploadFolder)) {
 // Set up Multer for handling file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadFolder); // Ensure this folder exists
+        cb(null, uploadFolder);
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
-
 const upload = multer({ storage: storage });
 
-// Route to fetch all products with pagination
+// Route to fetch all products with pagination and search functionality
 router.get('/', async (req, res) => {
-    const { page = 1, limit = 10 } = req.query; // Default to page 1 and limit 10 products per page
+    const { page = 1, limit = 10, search = '' } = req.query; // Default to page 1, limit 10 products
 
     try {
-        // Fetch paginated products
-        const products = await Product.find()
-            .skip((page - 1) * limit) // Skip products from previous pages
-            .limit(parseInt(limit)) // Limit the number of products to the requested page
-            .exec();
+        const query = search ? { name: new RegExp(search, 'i') } : {}; // Case-insensitive search by name
+        const products = await Product.find(query)
+            .skip((page - 1) * parseInt(limit))
+            .limit(parseInt(limit));
 
-        // Get the total count of products for pagination
-        const totalProducts = await Product.countDocuments();
+        const totalProducts = await Product.countDocuments(query);
 
         res.json({
             products,
             totalProducts,
-            totalPages: Math.ceil(totalProducts / limit), // Calculate the total pages
+            totalPages: Math.ceil(totalProducts / limit),
             currentPage: parseInt(page)
         });
     } catch (error) {
+        console.error('Error fetching products:', error);
         res.status(500).json({ message: 'Error fetching products', error });
     }
 });
 
-// Route to fetch what's new
+// Route to fetch "What's New" products (recently added, in-stock products)
 router.get('/whats-new', async (req, res) => {
     try {
         const products = await Product.find({ inStock: true })
-                                      .sort({ createdAt: -1 })  // Sort by newest products
-                                      .limit(5);  // Adjust the number of products to display
+            .sort({ createdAt: -1 }) // Sort by newest
+            .limit(5); // Adjust the limit as needed
         res.json(products);
     } catch (error) {
+        console.error('Error fetching new products:', error);
         res.status(500).json({ message: 'Error fetching new products', error });
     }
 });
 
-// Route to fetch trending products
+// Route to fetch "Trending" products (flagged as trending)
 router.get('/trending', async (req, res) => {
     try {
         const products = await Product.find({ trending: true })
-                                      .limit(5);  // Adjust the number of products to display
+            .limit(5); // Adjust the limit as needed
         res.json(products);
     } catch (error) {
+        console.error('Error fetching trending products:', error);
         res.status(500).json({ message: 'Error fetching trending products', error });
     }
 });
@@ -74,28 +74,24 @@ router.get('/trending', async (req, res) => {
 // POST route to upload a new product with an image
 router.post('/', upload.single('image'), async (req, res) => {
     try {
-        // Log the request body and uploaded file
-        console.log('Request Body:', req.body);
-        console.log('Uploaded File:', req.file);
-
-        // Check if file is uploaded
-        if (!req.file) {
-            return res.status(400).json({ message: 'Image file is required.' });
-        }
-
-        // Validate required fields
+        // Check for required fields
         if (!req.body.name || !req.body.category) {
             return res.status(400).json({ message: 'Name and category are required.' });
+        }
+        if (!req.file) {
+            return res.status(400).json({ message: 'Image file is required.' });
         }
 
         const newProduct = new Product({
             name: req.body.name,
             category: req.body.category,
-            title: req.body.title || undefined,
-            description: req.body.description || undefined,
+            title: req.body.title || '',
+            description: req.body.description || '',
             size: req.body.size ? req.body.size.split(',').map(size => size.trim()) : [],
-            price: req.body.price || undefined,
-            image: `product-images/${req.file.filename}` // Store image path
+            price: parseFloat(req.body.price) || 0,
+            inStock: req.body.inStock === 'true', // Ensure inStock is a boolean
+            trending: req.body.trending === 'true', // Ensure trending is a boolean
+            image: `product-images/${req.file.filename}`
         });
 
         const savedProduct = await newProduct.save();
@@ -106,4 +102,4 @@ router.post('/', upload.single('image'), async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = router

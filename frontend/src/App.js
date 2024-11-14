@@ -6,6 +6,7 @@ import About from './pages/About';
 import Products from './pages/Products';   
 import Contact from './pages/Contact';    
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import ProductDetails from './components/ProductsDetails'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </Router>
   );

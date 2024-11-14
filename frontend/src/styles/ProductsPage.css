@@ -1,0 +1,30 @@
+/* src/styles/ProductsPage.css */
+.products-page {
+    padding: 50px 20px;
+    background-color: #f4f8fb;
+  }
+  
+  .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .products-container .product-card {
+    flex: 1 1 calc(33% - 40px);
+    max-width: 300px;
+  }
+  
+  @media (max-width: 768px) {
+    .products-container .product-card {
+      flex: 1 1 calc(50% - 40px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .products-container .product-card {
+      flex: 1 1 100%;
+    }
+  }
+  
