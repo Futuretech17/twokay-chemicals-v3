@@ -1,0 +1,67 @@
+/* Updated ContactInfo.css */
+.contact-info-container {
+  font-family: 'Roboto', Arial, sans-serif;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-info-container h2 {
+  color: #0046b1;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start; /* Adjust for better alignment with multiline content */
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: #007bff;
+  margin-right: 20px;
+  transition: transform 0.2s ease;
+}
+
+.contact-info-item:hover .contact-icon {
+  transform: scale(1.1);
+}
+
+.contact-info-description p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6; /* Increases readability */
+  color: #333;
+}
+
+.contact-info-description p strong {
+  font-weight: bold;
+  color: #0046b1;
+}
+
+.contact-info-description ul {
+  margin: 0;
+  padding: 0 0 0 20px; /* Adds space for bullets */
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.contact-info-description ul li {
+  margin-bottom: 8px; /* Adds spacing between list items */
+}

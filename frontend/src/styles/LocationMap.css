@@ -1,0 +1,39 @@
+/* src/styles/locationMap.css */
+.location-map {
+  margin: 60px 0;
+  text-align: center;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+  position: relative;
+  padding: 20px 120px 40px 120px;
+}
+
+.location-map h3 {
+  color: #0046b1;  /* Use the same accent color as other headings */
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.location-map iframe {
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 100%;  /* Ensure the iframe is responsive */
+  height: 400px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);  /* Subtle shadow for depth */
+}
+
+.location-map::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background-color: #007bff;  /* Same as the button hover color */
+  border-radius: 10px;
+}

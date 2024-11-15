@@ -3,7 +3,12 @@ import React from 'react';
 import Navbar from '../components/Navbar'; // Import the Navbar
 import HeroSection from '../components/HeroSection';
 import Footer from '../components/Footer';
-// import heroAboutImage from '../assets/images/hero-about.jpg'; // Adjust path as needed
+// import CompanyOverview from '../components/CompanyOverview';
+// import MissionVisionValues from '../components/MissionVisionValues';
+// import ProductsOverview from '../components/ProductsOverview';
+// import OurTeam from '../components/OurTeam';
+// import Achievements from '../components/Achievements';
+import heroAboutImage from '../assets/images/about-us.jpg'; // Adjust path as needed
 
 const AboutPage = () => {
   return (
@@ -12,10 +17,17 @@ const AboutPage = () => {
       <HeroSection
         title="About Us"
         subtitle="Learn more about Twokay Chemicals Ltd."
-        // backgroundImage={heroAboutImage} // Pass the specific image
+        backgroundImage={heroAboutImage} // Pass the specific image
       />
-      <Footer/>
-      {/* Other page content goes here */}
+
+      {/* Each section is modular and imported as a component */}
+      {/* <CompanyOverview />
+      <MissionVisionValues />
+      <ProductsOverview />
+      <OurTeam />
+      <Achievements /> */}
+      
+      <Footer />
     </>
   );
 };

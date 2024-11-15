@@ -23,7 +23,7 @@ const SearchBar = ({ onSearch }) => {
           type="text"
           value={searchQuery}
           onChange={handleChange}
-          placeholder="Search products by name or category"
+          placeholder="Search products by name"
           className="search-input"
         />
         <button type="submit" className="search-button">Search</button>
