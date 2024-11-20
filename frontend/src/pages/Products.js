@@ -17,7 +17,7 @@ const ProductsPage = () => {
   const [totalProducts, setTotalProducts] = useState(0);
   const [error, setError] = useState(null);
 
-  const productsPerPage = 10; // Define how many products per page
+  const productsPerPage = 12; // Define how many products per page
 
   // Fetch products when the page changes or search query changes
   useEffect(() => {

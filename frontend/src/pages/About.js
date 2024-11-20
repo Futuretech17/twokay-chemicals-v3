@@ -1,13 +1,12 @@
-// src/pages/about.js
 import React from 'react';
 import Navbar from '../components/Navbar'; // Import the Navbar
 import HeroSection from '../components/HeroSection';
 import Footer from '../components/Footer';
-// import CompanyOverview from '../components/CompanyOverview';
-// import MissionVisionValues from '../components/MissionVisionValues';
-// import ProductsOverview from '../components/ProductsOverview';
-// import OurTeam from '../components/OurTeam';
-// import Achievements from '../components/Achievements';
+import CompanyOverview from '../components/CompanyOverview';
+import MissionVisionValues from '../components/MissionVisionValues';
+import ProductsOverview from '../components/ProductsOverview';
+import OurTeam from '../components/OurTeam';
+import Achievements from '../components/Achievements';
 import heroAboutImage from '../assets/images/about-us.jpg'; // Adjust path as needed
 
 const AboutPage = () => {
@@ -20,12 +19,12 @@ const AboutPage = () => {
         backgroundImage={heroAboutImage} // Pass the specific image
       />
 
-      {/* Each section is modular and imported as a component */}
-      {/* <CompanyOverview />
+      {/* Modular Sections */}
+      <CompanyOverview />
       <MissionVisionValues />
       <ProductsOverview />
       <OurTeam />
-      <Achievements /> */}
+      <Achievements />
       
       <Footer />
     </>
