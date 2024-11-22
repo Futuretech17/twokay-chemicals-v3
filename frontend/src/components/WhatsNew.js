@@ -7,12 +7,20 @@ const Carousel = () => {
   const wrapperRef = useRef(null);
   const headingRef = useRef(null); // Ref for the heading
   const [products, setProducts] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);  // Track current index of carousel
   const firstCardWidth = 340;
 
   const handleArrowClick = (direction) => {
     const carousel = carouselRef.current;
     if (carousel) {
-      carousel.scrollLeft += direction === 'left' ? -firstCardWidth : firstCardWidth;
+      const newIndex = direction === 'left' 
+        ? Math.max(currentIndex - 1, 0) 
+        : Math.min(currentIndex + 1, products.length - 1);
+      setCurrentIndex(newIndex);
+      carousel.scrollTo({
+        left: newIndex * firstCardWidth,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -44,17 +52,17 @@ const Carousel = () => {
           }
         });
       },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
+      { threshold: 0.1 }
     );
 
     const currentHeadingRef = headingRef.current;
     if (currentHeadingRef) {
-      observer.observe(currentHeadingRef); // Observe the heading element
+      observer.observe(currentHeadingRef);
     }
 
     return () => {
       if (currentHeadingRef) {
-        observer.unobserve(currentHeadingRef); // Cleanup observer when component unmounts
+        observer.unobserve(currentHeadingRef);
       }
     };
   }, []);
@@ -75,7 +83,6 @@ const Carousel = () => {
 
     const dragging = (e) => {
       if (!isDragging) return;
-
       const newScrollLeft = startScrollLeft - (e.pageX - startX);
       if (newScrollLeft <= 0 || newScrollLeft >= carousel.scrollWidth - carousel.offsetWidth) {
         isDragging = false;
@@ -122,7 +129,7 @@ const Carousel = () => {
       <div ref={wrapperRef} className="wrapper">
         <i onClick={() => handleArrowClick('left')} id="left">{"<"}</i>
         <ul ref={carouselRef} className="carousel">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <li key={product._id} className="card">
               <div className="img">
                 <img

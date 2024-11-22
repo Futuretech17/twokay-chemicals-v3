@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/CompanyOverview.css';
-import commitmentImage from '../assets/images/commitment.jpg'; // Adjust path as needed
-// import milestoneImage from '../assets/images/milestones.jpg'; // Placeholder for a milestones image
+import commitmentImage from '../assets/images/commitment.jpg'; // Ensure this image is optimized
 
 const CompanyOverview = () => {
   return (
@@ -23,10 +22,9 @@ const CompanyOverview = () => {
           </p>
         </div>
         <div className="image">
-          <img src={commitmentImage} alt="Company Overview" />
+          <img src={commitmentImage} alt="Company Overview" loading="lazy" />
         </div>
       </div>
-
 
       <div className="highlights">
         <div className="highlight">
@@ -42,7 +40,7 @@ const CompanyOverview = () => {
           <p>Product categories</p>
         </div>
       </div>
-  </section>
+    </section>
   );
 };
 

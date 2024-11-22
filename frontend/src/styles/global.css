@@ -34,3 +34,24 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
+/* Base styles */
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center;
+  }
+  .about-us .content .text, .about-us .content .image {
+      width: 100%; /* Full width for mobile */
+      margin-bottom: 20px; /* Add spacing */
+  }
+  .about-us p {
+      text-align: justify; /* Improve readability on smaller screens */
+  }
+}
+

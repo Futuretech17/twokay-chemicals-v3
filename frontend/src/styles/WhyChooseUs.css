@@ -119,22 +119,59 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .why-choose-us {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Stack the content vertically */
+        text-align: center; /* Center the text */
+        padding: 20px 10px; /* Adjust padding for mobile */
+        margin: 0 10px;
     }
 
     .why-left, .why-right {
-        width: 100%;
-        padding: 0;
+        width: 100%; /* Set both sides to take full width */
+        padding: 10px 0; /* Reduce padding for mobile */
+    }
+
+    .why-left {
+        text-align: center; /* Center-align text for mobile */
+        opacity: 1; /* Ensure opacity is visible on mobile */
+        transform: translateY(0); /* Reset translateY for visible positioning */
+    }
+
+    .why-left h2 {
+        font-size: 2rem; /* Adjust font size for mobile */
+    }
+
+    .why-description {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    .learn-more-button {
+        padding: 12px 25px; /* Adjust button size for better touch interaction */
+        font-size: 1.1rem; /* Increase font size for readability */
     }
 
     .why-right {
-        margin-top: 0;
-        flex-direction: column; /* Stacks columns vertically on mobile */
-        gap: 20px; /* Adds spacing between the columns on mobile */
+        flex-direction: column; /* Stack the columns vertically */
+        gap: 15px; /* Add space between columns */
     }
 
-    .why-points-column {
-        gap: 20px;
+    .why-points-column, .why-points-column2 {
+        gap: 15px; /* Adjust gap for mobile */
+    }
+
+    .why-point {
+        flex-direction: column; /* Keep points in a column layout */
+        padding: 15px; /* Reduce padding for mobile */
+    }
+
+    .why-point h3 {
+        font-size: 1.3rem; /* Adjust heading size */
+    }
+
+    .why-point p {
+        font-size: 0.9rem; /* Smaller paragraph font */
+    }
+
+    .icon {
+        font-size: 2rem; /* Reduce icon size */
     }
 }

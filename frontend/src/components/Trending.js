@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Trending.css'; // Make sure to style the section
-
+import { Link } from 'react-router-dom';
 const Trending = () => {
   // State to store the trending products
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -49,7 +49,6 @@ const Trending = () => {
               />
               <h3>{product.name}</h3>
               <p>{product.category}</p>
-              <a href="javascript:void(0)">Learn More</a>
             </div>
           ))
         ) : (

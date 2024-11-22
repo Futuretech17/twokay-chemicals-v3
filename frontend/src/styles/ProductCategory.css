@@ -1,121 +1,156 @@
+/* Product Categories Section */
 .product-categories {
-    padding: 40px 20px; /* Padding for the section */
-    text-align: center; /* Center the text */
-    background-color: #f4f8fb; /* Consistent background color */
+    padding: 40px 10px; /* Adjusted padding for mobile view */
+    text-align: center;
+    background-color: #f4f8fb;
     margin-top: -50px;
 }
 
 /* Heading Animation */
 .product-categories h2 {
     font-size: 28px;
-    color: #0046b1; /* Consistent heading color */
+    color: #0046b1;
     margin-bottom: 20px;
-    opacity: 0;  /* Start with no opacity */
-    transform: translateY(20px); /* Start slightly below */
+    opacity: 0;
+    transform: translateY(20px);
     animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 0.2s; /* Add a slight delay for smooth sequential appearance */
+    animation-delay: 0.2s;
 }
 
-
+/* Categories Container */
 .categories-container {
     display: flex;
-    flex-wrap: wrap; /* Enable wrapping */
-    justify-content: center; /* Center the items */
-    margin: 0 120px; /* Center the container */
-    padding: 0; /* Add horizontal padding for uniformity */
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto; /* Centralized layout */
+    padding: 0; /* Clean padding */
 }
 
-/* Add keyframes for the h2 animation */
-@keyframes fadeInSlide {
-    0% { opacity: 0; transform: translateY(-50px); }
-    20% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(50px); }
-}
-
+/* Category Card */
 .category-card {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    background-size: cover; /* Cover the card with the background */
-    background-position: center; /* Center the background image */
+    background-size: cover;
+    background-position: center;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    flex: 1 1 200px; /* Responsive sizing */
-    max-width: 300px; /* Adjust max-width for better proportions */
-    margin: 10px; /* Uniform margin */
+    flex: 1 1 200px;
+    max-width: 300px;
+    margin: 10px;
     padding: 20px;
-    color: white; /* Text color on the card */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
-    position: relative; /* For z-index control */
-    height: 250px; /* Fixed height for better uniformity */
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    height: 250px;
     text-align: center;
-    cursor: pointer; /* Makes the whole card clickable */
+    cursor: pointer;
     text-decoration: none;
 }
 
 .category-card:hover {
-    transform: scale(1.05); /* Slightly enlarges the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhances shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Overlay Effect */
 .category-card::before {
-    content: ''; /* Create a pseudo-element for shading */
-    position: absolute; /* Position it absolutely within the card */
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(14, 99, 163, 0.4); /* Semi-transparent black for shading */
-    border-radius: 8px; /* Match card border-radius */
-    z-index: 1; /* Place it below the content */
+    background-color: rgba(14, 99, 163, 0.4);
+    border-radius: 8px;
+    z-index: 1;
 }
 
 .category-card h3 {
-    margin: 20px 0; /* Spacing above and below the heading */
+    margin: 20px 0;
     font-size: 20px;
-    z-index: 2; /* Above the shading */
-    position: relative; /* Position relative for z-index to work */
+    z-index: 2;
+    position: relative;
 }
 
-/* Remove underline specifically for links in .category-card */
-
-
+/* Enquire Button */
 .enquire-button {
-    padding: 10px 15px; /* Padding for the button */
-    background-color: #7aba6f; /* Button background color */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    color: white; /* Button text color */
-    cursor: pointer; /* Change cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Animation for background color change */
-    z-index: 2; /* Above the shading */
-    position: relative; /* Position relative for z-index to work */
-    text-decoration: none; /* Removes underline from the link */
+    padding: 10px 15px;
+    background-color: #7aba6f;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+    position: relative;
+    text-decoration: none;
 }
 
 .enquire-button:hover {
-    background-color: #6a9a54; /* Darker shade on hover */
-    transform: translateY(-3px); /* Adds a "lift" effect on button hover */
+    background-color: #6a9a54;
+    transform: translateY(-3px);
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+    /* Adjust Container */
+    .product-categories {
+        padding: 20px 10px;
+        margin: 20px 0;
+    }
+
+    .categories-container {
+        flex-direction: column; /* Stack all cards vertically */
+    }
+
     .category-card {
-        flex: 1 1 100%; /* Full width on smaller screens */
-        margin: 10px 0; /* Adjust margin */
+        flex: 1 1 100%;
+        max-width: 100%; /* Full width for cards */
+        margin: 10px 0; /* Vertical spacing only */
+    }
+
+    /* Heading Scaling */
+    .product-categories h2 {
+        font-size: 24px;
+    }
+
+    .category-card h3 {
+        font-size: 18px;
+    }
+
+    .enquire-button {
+        padding: 8px 12px; /* Slightly smaller button */
     }
 }
 
-/* Animation keyframes */
+@media (max-width: 1024px) {
+    .categories-container {
+        gap: 20px;
+    }
+
+    .category-card {
+        flex: 1 1 48%; /* Two cards per row */
+    }
+
+    .category-card h3 {
+        font-size: 20px;
+    }
+
+    .enquire-button {
+        padding: 10px 15px;
+    }
+}
+
+/* Animation Keyframes */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
-        transform: translateY(20px); /* Starts slightly below */
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0); /* Moves to the normal position */
+        transform: translateY(0);
     }
 }
