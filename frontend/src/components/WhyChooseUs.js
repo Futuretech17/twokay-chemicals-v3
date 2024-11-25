@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
             <div ref={leftRef} className="why-left">
                 <h2>Why Choose Us</h2>
                 <p className="why-description">
-                    As a premier supplier of medical devices and supplies in the region, Twokay Chemicals Ltd. is your ultimate source for healthcare solutions. We have decades of experience and operations across the country, enabling us to provide reliable and high-quality healthcare solutions.
+                    As a premier supplier of surgical and pharmaceuticals supplies in the region, Twokay Chemicals Ltd. is your ultimate source for healthcare solutions. We have decades of experience and operations across the country, enabling us to provide reliable and high-quality healthcare solutions.
                 </p>
                 <Link to="/about" className="learn-more-button">Learn More</Link>
             </div>
@@ -41,26 +41,27 @@ const WhyChooseUs = () => {
                 <div className="why-points-column">
                     <div className="why-point">
                         <div className="icon">🏆</div>
-                        <h3>25+ Years</h3>
-                        <p>Over two decades of industry experience.</p>
+                        <h3>30+ Years</h3>
+                        <p>Over three decades of industry experience.</p>
                     </div>
                     <div className="why-point">
                         <div className="icon">📈</div>
-                        <h3>5,000+ Clients</h3>
-                        <p>Serving clients globally with dedication.</p>
+                        <h3>2,000+ Clients</h3>
+                        <p>Serving clients countrywide with dedication.</p>
                     </div>
                 </div>
                 <div className="why-points-column2">
                     <div className="why-point">
                         <div className="icon">🤝</div>
-                        <h3>500+ Employees</h3>
+                        <h3>Dedicated workforce</h3>
                         <p>Professional team committed to quality.</p>
                     </div>
                     <div className="why-point">
-                        <div className="icon">🌍</div>
-                        <h3>Global Presence</h3>
-                        <p>Operations in multiple countries for better reach.</p>
-                    </div>
+                <div className="icon">📍</div> {/* A location pin icon to signify nationwide presence */}
+                    <h3>Nationwide Presence</h3>
+                    <p>Extensive operations across the country for better accessibility.</p>
+                </div>
+
                 </div>
             </div>
         </div>

@@ -1,22 +1,13 @@
 // src/components/HeroSection.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/HeroSection.css';
 
 const HeroSection = ({ title, subtitle, backgroundImage }) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  // Lazy load background image
-  useEffect(() => {
-    const image = new Image();
-    image.src = backgroundImage;
-    image.onload = () => setIsImageLoaded(true);
-  }, [backgroundImage]);
-
   return (
     <div
-      className={`hero-section ${isImageLoaded ? 'image-loaded' : ''}`}
+      className="hero-section"
       style={{
-        backgroundImage: isImageLoaded ? `url(${backgroundImage})` : 'none', // Only set background once image is loaded
+        backgroundImage: `url(${backgroundImage})`, // Directly set the background image
       }}
     >
       <div className="hero-content">

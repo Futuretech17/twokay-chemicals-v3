@@ -20,8 +20,13 @@ app.use('/product-images', express.static(path.join(__dirname, 'public/product-i
 
 // Connect to MongoDB without deprecated options
 const PORT = process.env.PORT || 5000;
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
-    .catch((error) => console.error(error));
 
+// Bind the server to all available network interfaces for local network access
+const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
+});
 
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((error) => console.error('MongoDB connection error:', error));

@@ -1,4 +1,3 @@
-// src/components/ContactForm.js
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import '../styles/ContactForm.css';
@@ -27,13 +26,12 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Send email using EmailJS
     emailjs
       .sendForm(
-        'PReuRcjni-UbBpAKr', // Your EmailJS service ID
-        'your_template_id', // Your EmailJS template ID
+        process.env.REACT_APP_EMAILJS_SERVICE_ID, // Service ID
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Template ID
         e.target, // Form element
-        'your_user_id' // Your EmailJS user ID
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY // Public Key
       )
       .then(
         (result) => {
@@ -42,7 +40,7 @@ const ContactForm = () => {
           setIsSubmitting(false);
         },
         (error) => {
-          console.log(error.text);
+          console.error(error.text);
           alert('Something went wrong. Please try again.');
           setIsSubmitting(false);
         }
@@ -63,12 +61,13 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         >
+          <option value="">Select Enquiry Type</option>
           <option value="Sales Enquiry">Sales Enquiry</option>
           <option value="Supplier Proposal">Supplier Proposal</option>
           <option value="Complaint">Complaint</option>
         </select>
       </div>
-      
+
       <div className="form-field">
         <label htmlFor="name">Full Name</label>
         <input
@@ -138,7 +137,7 @@ const ContactForm = () => {
         />
       </div>
 
-      <button className='contact-form-button' type="submit" disabled={isSubmitting}>
+      <button className="contact-form-button" type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending...' : 'Submit'}
       </button>
     </form>

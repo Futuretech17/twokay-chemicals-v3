@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import CompanyOverview from '../components/CompanyOverview';
 import MissionVisionValues from '../components/MissionVisionValues';
 import ProductsOverview from '../components/ProductsOverview';
-import OurTeam from '../components/OurTeam';
-import Achievements from '../components/Achievements';
+// import OurTeam from '../components/OurTeam';
+// import Achievements from '../components/Achievements';
 import heroAboutImage from '../assets/images/about-us.jpg'; // Adjust path as needed
 
 const AboutPage = () => {
@@ -23,8 +23,8 @@ const AboutPage = () => {
       <CompanyOverview />
       <MissionVisionValues />
       <ProductsOverview />
-      <OurTeam />
-      <Achievements />
+      {/* <OurTeam /> */}
+      {/* <Achievements /> */}
       
       <Footer />
     </>

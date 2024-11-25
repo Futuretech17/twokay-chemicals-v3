@@ -18,7 +18,7 @@ const HomePage = () => {
       <Navbar /> {/* Include the Navbar here */}
       <HeroSection
         title="Welcome to Twokay Chemicals Ltd"
-        subtitle="Your trusted partner in medical and pharmaceutical products."
+        subtitle="Your trusted partner in surgicals and pharmaceutical products."
         backgroundImage={heroHomeImage} // Pass the specific image
       />
       <SellingPoints />

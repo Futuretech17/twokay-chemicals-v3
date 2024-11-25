@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Trending.css'; // Make sure to style the section
-import { Link } from 'react-router-dom';
 const Trending = () => {
   // State to store the trending products
   const [trendingProducts, setTrendingProducts] = useState([]);
