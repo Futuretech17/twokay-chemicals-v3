@@ -47,7 +47,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {year} Twokay Chemicals Ltd | Powered by <a href="javascript:void(0)">Frostfieldtech</a></p>
+        <p>&copy; {year} Twokay Chemicals Ltd | Powered by Frostfieldtech</p>
       </div>
     </footer>
   );
