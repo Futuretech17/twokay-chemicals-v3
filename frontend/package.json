@@ -14,7 +14,8 @@
     "react-router-dom": "^6.27.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "serve": "^14.0.1"  // Added serve for production server
   },
   "devDependencies": {
     "react-scripts": "5.0.1",
@@ -22,7 +23,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "start": "react-scripts start",
+    "start": "serve -s build", // Serve the build folder in production
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
