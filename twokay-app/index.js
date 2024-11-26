@@ -8,8 +8,15 @@ require('dotenv').config(); // Load environment variables from .env file
 
 const app = express();
 
+// CORS configuration to allow requests from specific origin
+const corsOptions = {
+    origin: 'http://localhost:3000', // Set your frontend URL here
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Customize headers if necessary
+};
+app.use(cors(corsOptions)); // Apply the refined CORS settings
+
 // Middleware
-app.use(cors()); // Allow cross-origin requests
 app.use(express.json()); // Parse JSON payloads
 
 // API Routes
