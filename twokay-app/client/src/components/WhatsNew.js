@@ -6,15 +6,15 @@ const Carousel = () => {
   const carouselRef = useRef(null);
   const wrapperRef = useRef(null);
   const headingRef = useRef(null); // Ref for the heading
-  const [products, setProducts] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);  // Track current index of carousel
+  const [products, setProducts] = useState([]); // State to hold products
+  const [currentIndex, setCurrentIndex] = useState(0); // Track current index of carousel
   const firstCardWidth = 340;
 
   const handleArrowClick = (direction) => {
     const carousel = carouselRef.current;
     if (carousel) {
-      const newIndex = direction === 'left' 
-        ? Math.max(currentIndex - 1, 0) 
+      const newIndex = direction === 'left'
+        ? Math.max(currentIndex - 1, 0)
         : Math.min(currentIndex + 1, products.length - 1);
       setCurrentIndex(newIndex);
       carousel.scrollTo({
@@ -27,7 +27,8 @@ const Carousel = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products/whats-new');
+        // Fetch products using the dynamic base URL
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/products/whats-new`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -124,7 +125,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <section className='whatsnew-container'>
+    <section className="whatsnew-container">
       <h2 ref={headingRef} className="whatsnew-heading">What's New in Stock</h2>
       <div ref={wrapperRef} className="wrapper">
         <i onClick={() => handleArrowClick('left')} id="left">{"<"}</i>
@@ -133,7 +134,7 @@ const Carousel = () => {
             <li key={product._id} className="card">
               <div className="img">
                 <img
-                  src={`http://localhost:5000/${product.image}`}
+                  src={`${process.env.REACT_APP_API_BASE_URL}/${product.image}`}
                   alt={product.name}
                   draggable="false"
                 />

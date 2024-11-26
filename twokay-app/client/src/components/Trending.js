@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Trending.css'; // Make sure to style the section
+
 const Trending = () => {
   // State to store the trending products
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -8,7 +9,7 @@ const Trending = () => {
 
   useEffect(() => {
     // Fetch trending products from the backend
-    fetch('http://localhost:5000/api/products/trending')
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/products/trending`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch trending products');
@@ -43,7 +44,7 @@ const Trending = () => {
           trendingProducts.map((product) => (
             <div key={product._id} className="trending-card">
               <img
-                src={`http://localhost:5000/${product.image}`} // Assuming your backend serves static images
+                src={`${process.env.REACT_APP_API_BASE_URL}/${product.image}`} // Assuming your backend serves static images
                 alt={product.name}
               />
               <h3>{product.name}</h3>
