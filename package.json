@@ -15,8 +15,8 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "scripts": {
-    "build": "cd twokay-app/client && npm install && npm run build", 
-    "start": "cd twokay-app/client && npm start",
-    "install:frontend": "cd twokay-app/client && npm install"  
+    "build": "cd twokay-app/client && npm install && npm run build",  
+    "start": "cd twokay-app/client && npm start",  
+    "install:frontend": "cd twokay-app/client && npm install" 
   }
 }
